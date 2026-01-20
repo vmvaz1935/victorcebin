@@ -1,0 +1,559 @@
+
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protocolo de Reabilitação - Pace</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00A6A6;
+            --primary-dark: #006D77;
+            --primary-light: #E0F7F7;
+            --bg-light: #F8FAFB;
+            --white: #FFFFFF;
+            --text-dark: #1A1A1A;
+            --text-light: #6B7280;
+            --alert-bg: #FEF3C7;
+            --alert-text: #92400E;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.12);
+            --radius: 16px;
+            --gradient: linear-gradient(135deg, #00A6A6 0%, #006D77 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(180deg, #F8FAFB 0%, #E8F4F5 100%);
+            color: var(--text-dark);
+            line-height: 1.7;
+            padding-bottom: 40px;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Header */
+        header {
+            background: var(--white);
+            border-bottom: 3px solid var(--primary);
+            padding: 24px 20px;
+            box-shadow: 0 2px 10px rgba(0, 166, 166, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-text h1 {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 4px;
+        }
+
+        .logo-text span {
+            color: var(--primary);
+        }
+
+        .logo-text p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        .patient-info {
+            text-align: right;
+        }
+
+        .patient-name {
+            font-weight: 700;
+            font-size: 1.15rem;
+            color: var(--text-dark);
+            margin-bottom: 6px;
+        }
+
+        .diagnosis {
+            font-size: 0.875rem;
+            color: var(--primary-dark);
+            background: var(--primary-light);
+            padding: 6px 12px;
+            border-radius: 8px;
+            display: inline-block;
+            margin-top: 6px;
+            font-weight: 600;
+            border: 1px solid rgba(0, 166, 166, 0.2);
+        }
+
+        /* Disclaimer Section */
+        .safety-banner {
+            background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%);
+            color: var(--alert-text);
+            padding: 18px;
+            text-align: center;
+            font-size: 0.95rem;
+            border-bottom: 2px solid #FCD34D;
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(146, 64, 14, 0.1);
+        }
+
+        /* Main Container */
+        main {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 24px;
+        }
+
+        .intro-text {
+            background: var(--white);
+            padding: 32px;
+            border-radius: var(--radius);
+            margin-bottom: 40px;
+            border-left: 6px solid var(--primary);
+            box-shadow: var(--shadow-lg);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .intro-text:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(0, 166, 166, 0.15);
+        }
+
+        .intro-text h2 {
+            font-size: 1.75rem;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+
+        .intro-text ul {
+            margin-top: 16px;
+        }
+
+        .intro-text li {
+            margin-bottom: 8px;
+            padding-left: 8px;
+        }
+
+        .section-title {
+            color: var(--primary-dark);
+            font-size: 1.75rem;
+            margin: 50px 0 30px 0;
+            padding-bottom: 16px;
+            border-bottom: 3px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-weight: 700;
+        }
+
+        .section-title h2 {
+            margin: 0;
+            font-weight: 700;
+        }
+
+        .badge-a {
+            background: var(--gradient);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 12px rgba(0, 166, 166, 0.3);
+        }
+
+        .badge-b {
+            background: linear-gradient(135deg, #006D77 0%, #004A52 100%);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 12px rgba(0, 109, 119, 0.3);
+        }
+
+        /* Exercise Grid */
+        .exercise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 32px;
+        }
+
+        /* Exercise Card */
+        .card {
+            background: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(0, 166, 166, 0.1);
+            position: relative;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(0, 166, 166, 0.3);
+        }
+
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card-content {
+            padding: 24px;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 16px;
+            gap: 12px;
+        }
+
+        .exercise-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            line-height: 1.4;
+            flex: 1;
+        }
+
+        .reps-badge {
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            font-weight: 700;
+            font-size: 0.875rem;
+            padding: 6px 14px;
+            border-radius: 8px;
+            white-space: nowrap;
+            border: 2px solid var(--primary);
+            box-shadow: 0 2px 8px rgba(0, 166, 166, 0.15);
+        }
+
+        .instructions {
+            font-size: 1rem;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        .instructions strong {
+            color: var(--text-dark);
+            display: block;
+            margin-top: 12px;
+            margin-bottom: 6px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+        }
+
+        .instructions .keyword {
+            font-weight: 700;
+            color: var(--primary-dark);
+            display: inline;
+        }
+
+        .video-link {
+            display: inline-block;
+            margin-top: 12px;
+            margin-bottom: 8px;
+            padding: 10px 16px;
+            background: var(--gradient);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 166, 166, 0.2);
+        }
+
+        .video-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 166, 166, 0.3);
+            background: linear-gradient(135deg, #00B8B8 0%, #007A85 100%);
+        }
+
+        .video-link::before {
+            content: '▶ ';
+            margin-right: 6px;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 80px;
+            text-align: center;
+            padding: 48px 24px;
+            background: var(--gradient);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .footer-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+
+        .footer-content p {
+            font-size: 1rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .footer-content strong {
+            font-weight: 700;
+            opacity: 1;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .logo {
+                flex-direction: column;
+                align-items: center;
+            }
+            .patient-info {
+                text-align: center;
+            }
+            .exercise-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            .intro-text {
+                padding: 24px;
+            }
+            .card-content {
+                padding: 20px;
+            }
+            .section-title {
+                font-size: 1.5rem;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+            main {
+                padding: 0 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo h1 {
+                font-size: 1.5rem;
+            }
+            .exercise-title {
+                font-size: 1.1rem;
+            }
+        }
+
+        /* Loading Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .card:nth-child(1) { animation-delay: 0.1s; }
+        .card:nth-child(2) { animation-delay: 0.2s; }
+        .card:nth-child(3) { animation-delay: 0.3s; }
+        .card:nth-child(4) { animation-delay: 0.4s; }
+        .card:nth-child(5) { animation-delay: 0.5s; }
+        .card:nth-child(6) { animation-delay: 0.6s; }
+        .card:nth-child(7) { animation-delay: 0.7s; }
+    </style>
+
+
+
+    <!-- Aviso de Segurança Superior -->
+    <div class="safety-banner">
+        <strong>⚠️ Atenção:</strong> Este material é educativo. Em caso de dor intensa, inchaço ou instabilidade, interrompa e contate seu fisioterapeuta.
+    </div>
+
+    <!-- Cabeçalho -->
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-text">
+                    <h1>Clínica <span>Pace</span></h1>
+                    <p style="font-size: 0.9rem; color: #666;">Fisioterapia Esportiva</p>
+                </div>
+            </div>
+            <div class="patient-info">
+                <div class="patient-name">Paciente: Victor Cebin Reges</div>
+                <div class="diagnosis">HD: Tendinopatia Lateral e Medial Cotovelo</div>
+                <div style="font-size: 0.85rem; color: #888; margin-top: 2px;">Ft. Vitor da Mata Vaz - Crefito-3 297100</div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Introdução -->
+        <section class="intro-text">
+            <h2 style="color: var(--primary-dark); margin-bottom: 10px;">Objetivos e Orientações</h2>
+            <p style="background: var(--primary-light); padding: 12px 16px; border-radius: 8px; margin-bottom: 16px; border-left: 4px solid var(--primary);"><strong>📅 Frequência Recomendada:</strong> Conforme orientação do fisioterapeuta</p>
+            <p>O foco desta fase da reabilitação é o ganho de força muscular, controle motor e estabilização do cotovelo.</p>
+            <br>
+            <ul style="padding-left: 20px;">
+                <li>Mantenha a respiração fluida.</li>
+                <li>Respeite o limite de dor.</li>
+                <li>Siga as instruções de posicionamento e movimento.</li>
+            </ul>
+        </section>
+
+        <!-- TREINO A -->
+        <section id="treino-a">
+            <div class="section-title">
+                <span class="badge-a">TREINO A</span>
+                <h2>Fortalecimento Base</h2>
+            </div>
+
+            <div class="exercise-grid">
+                
+                <!-- Exercício 1 -->
+                <article class="card">
+                    <div class="card-content">
+                        <div class="card-header">
+                            <div class="exercise-title">Alongamento do Punho</div>
+                            <div class="reps-badge">3 x 30-45 seg</div>
+                        </div>
+                        <a href="https://www.youtube.com/watch?v=wqzrb67Dwf8" target="_blank" rel="noopener noreferrer" class="video-link">Assistir Vídeo Demonstrativo</a>
+                        <div class="instructions">
+                            <strong>Posição Inicial:</strong> Sente-se confortavelmente ou em pé, com o braço afetado estendido à sua frente.
+                            <strong>Execução:</strong> Para <span class="keyword">Tennis Elbow</span>, deixe o punho cair naturalmente e puxe suavemente com a mão oposta. Para <span class="keyword">Golfer's Elbow</span>, com a palma para cima, puxe os dedos em direção a você.
+                            <strong>Dicas:</strong> Mantenha o alongamento suave, sem dor aguda.
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Exercício 2 -->
+                <article class="card">
+                    <div class="card-content">
+                        <div class="card-header">
+                            <div class="exercise-title">Fortalecimento Isométrico</div>
+                            <div class="reps-badge">1 x 10 reps</div>
+                        </div>
+                        <a href="https://www.youtube.com/watch?v=Jm2x3Y1J8E0" target="_blank" rel="noopener noreferrer" class="video-link">Assistir Vídeo Demonstrativo</a>
+                        <div class="instructions">
+                            <strong>Posição Inicial:</strong> Sente-se com o antebraço apoiado na mesa.
+                            <strong>Execução:</strong> Para <span class="keyword">Tennis Elbow</span>, posicione a mão com a palma para baixo e tente levantar o punho contra a resistência da mão oposta. Para <span class="keyword">Golfer's Elbow</span>, posicione a mão com a palma para cima e tente fechar o punho contra a resistência.
+                            <strong>Dicas:</strong> Mantenha a contração firme, sem dor aguda.
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Exercício 3 -->
+                <article class="card">
+                    <div class="card-content">
+                        <div class="card-header">
+                            <div class="exercise-title">Fortalecimento Excêntrico com Peso</div>
+                            <div class="reps-badge">2-3 x 10-15 reps</div>
+                        </div>
+                        <a href="https://www.youtube.com/watch?v=0XnT9uVM3t8" target="_blank" rel="noopener noreferrer" class="video-link">Assistir Vídeo Demonstrativo</a>
+                        <div class="instructions">
+                            <strong>Posição Inicial:</strong> Sente-se confortavelmente com o antebraço apoiado na coxa, segurando um peso.
+                            <strong>Execução:</strong> Para <span class="keyword">Tennis Elbow</span>, use a mão oposta para levantar o punho e controle a descida. Para <span class="keyword">Golfer's Elbow</span>, levante o punho com a mão oposta e controle a descida.
+                            <strong>Dicas:</strong> A fase excêntrica é a mais importante. Controle o movimento lentamente.
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Exercício 4 -->
+                <article class="card">
+                    <div class="card-content">
+                        <div class="card-header">
+                            <div class="exercise-title">Pronação/Supinação com Peso</div>
+                            <div class="reps-badge">2 x 15-20 reps</div>
+                        </div>
+                        <a href="https://www.youtube.com/watch?v=Y4z4o3Zf6rY" target="_blank" rel="noopener noreferrer" class="video-link">Assistir Vídeo Demonstrativo</a>
+                        <div class="instructions">
+                            <strong>Posição Inicial:</strong> Sente-se com o cotovelo dobrado em 90 graus, segurando um peso em posição neutra.
+                            <strong>Execução:</strong> Gire o punho para fora (supinação) e depois para dentro (pronação) de forma controlada.
+                            <strong>Dicas:</strong> Mantenha o movimento fluido, sem parar.
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer>
+        <div class="footer-content">
+            <h3>Clínica Pace</h3>
+            <p>Elaborado por <strong>Vitor da Mata Vaz</strong> – Fisioterapeuta Esportivo - Crefito-3 297100</p>
+        </div>
+    </footer>
+
